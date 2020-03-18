@@ -1,0 +1,81 @@
+<div class="container register-form">
+  <div class="form">
+      <div class="note">
+          <p>Rent Details</p>
+      </div>
+
+      <div class="form-content">
+      
+        <div class="row">
+          <div class="col-md-6">
+              <div class="form-group">
+                <input type="text" [(ngModel)]="customerId" class="form-control" placeholder="Customer Id">
+              </div>
+              
+            
+          </div>
+          
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+              <input type="text" [(ngModel)]="carId" class="form-control" placeholder="Car Id">
+            </div>
+            
+          
+        </div>
+        
+    </div>
+
+          <div class="row">
+              <div class="col-md-6">
+                  <div class="form-group">
+                    <input type="date"  [(ngModel)]="startDate" class="form-control" >
+                  </div>
+                  
+                
+              </div>
+              <div class="col-md-6">
+                  <div class="form-group">
+                    <input type="date"  [(ngModel)]="endDate" class="form-control" >
+                  </div>
+                 
+              </div>
+          </div>
+          
+
+          <div class="row">
+              <div class="col-md-6">
+                  <div class="form-group">
+                      <input type="text" [(ngModel)]="startLocation" class="form-control" placeholder="Start Location">
+
+                  </div>
+           
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                    <input type="text" [(ngModel)]="endLocation" class="form-control" placeholder="End Location">
+
+                </div>
+         
+            </div>
+              
+          </div>
+          <div class="row">
+              <div class="col-md-12">
+                  <div class="form-group">
+                      <textarea type="text" [(ngModel)]="comment" class="form-control"
+          placeholder="Enter Comment"></textarea>
+
+                  </div>
+           
+              </div>
+              
+          </div>
+
+          <button type="button" class="btnSubmit" (click)="save()">Submit</button>
+
+      </div>
+  </div>
+</div>
+

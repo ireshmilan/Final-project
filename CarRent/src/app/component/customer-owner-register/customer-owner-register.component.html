@@ -1,0 +1,133 @@
+
+<div class="container register-form">
+  <div class="form">
+      <div class="note">
+          <p>Stakeholders Register</p>
+      </div>
+
+      <div class="form-content">
+          <div class="row">
+              <div class="col-md-4">
+                  <div class="form-group">
+                    <input type="text" [(ngModel)]="firstName" class="form-control" placeholder="First Name"> 
+                  </div>
+                  
+              </div>
+              <div class="col-md-4">
+                  <div class="form-group">
+                    <input type="text" [(ngModel)]="middleName" class="form-control" placeholder="Middle Name">  
+                  </div>
+                  
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <input type="text" [(ngModel)]="lastName" class="form-control" placeholder="Last Name">
+                </div>
+                
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                  <label>Gender</label>
+                  <div class="form-control">
+                    <label class="radio-inline">
+                      <input type="radio" [(ngModel)]="gender" value="male" name="gender">Male
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" [(ngModel)]="gender" value="female" name="gender">Female
+                    </label>
+                  </div>
+                  
+                  
+                </div>
+                
+            </div>
+            </div>
+
+          <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                  <input type="text" [(ngModel)]="idCardNo" class="form-control" placeholder="Identity Card Number">
+                </div>
+                
+            </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                  <div class="form-group">
+                    <input type="date"  [(ngModel)]="dob" class="form-control"  placeholder="Enter DOB">
+                  </div>
+                  
+              </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                      <input type="text" [(ngModel)]="email" class="form-control" placeholder="Email">
+                    </div>
+                    
+                </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Telephone : </label>
+                      </div>
+                      
+                  </div>
+                  </div>
+
+                <div class="row">
+                  <div class="col-md-4">
+                      <div class="form-group">
+                        <input type="text" [(ngModel)]="telephone1" class="form-control" placeholder="Phone Number 1">
+                      </div>
+                      
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <input type="text" [(ngModel)]="telephone2" class="form-control" placeholder="Phone Number 2">
+                    </div>
+                    
+                </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                          <label>Address : </label>
+                        </div>
+                        
+                    </div>
+                    </div>
+
+                  <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                          <input type="text" [(ngModel)]="no" class="form-control" placeholder="No">
+                        </div>
+                        
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <input type="text" [(ngModel)]="lane" class="form-control" placeholder="Lane">
+                      </div>
+                      
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <input type="text" [(ngModel)]="city" class="form-control" placeholder="City">
+                    </div>
+                    
+                </div>
+                    </div>
+
+          <button type="button"  class="btnSubmit" (click)="save()">Submit</button>
+      </div>
+  </div>
+</div>
+
+
+

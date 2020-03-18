@@ -1,0 +1,126 @@
+<div class="container register-form">
+    <div class="form">
+        <div class="note">
+            <p>Vehicle Registration</p>
+        </div>
+
+        <div class="form-content">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="text" [(ngModel)]="registerdNumber" class="form-control"
+                        placeholder="Enter Registerd Number">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" [(ngModel)]="brand" class="form-control" placeholder="Enter Vehicle Brand">
+                    </div>
+                    
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="text" [(ngModel)]="registerdYear" class="form-control"
+                        placeholder="Enter Registerd Year">
+                    </div>
+                   
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                         <input type="text" [(ngModel)]="ModelName" class="form-control" placeholder="Enter Model Name">    
+                    </div>
+                    
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="text" [(ngModel)]="modelYear" class="form-control"
+                        placeholder="Enter Model Year">
+                    </div>
+                         
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="text" [(ngModel)]="modelColor" class="form-control" placeholder="Enter Vehicle Color">
+                    </div>
+                   
+                </div>
+                
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Fuel Type</label>
+                      <div class="form-control">
+                        <label class="radio-inline">
+                          <input type="radio" [(ngModel)]="fuel" value="Diesel" name="fuel">Diesel
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" [(ngModel)]="fuel" value="Petrol" name="fuel">Petrol
+                        </label>
+                      </div>   
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Transmissin Type</label>
+                      <div class="form-control">
+                        <label class="radio-inline">
+                          <input type="radio" [(ngModel)]="transmission" value="Auto" name="transmission">Auto
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" [(ngModel)]="transmission" value="Manual" name="transmission">Manual
+                        </label>
+                      </div>
+                         
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Transmissin Type</label>
+                      <div class="form-control">
+                        <label class="radio-inline">
+                          <input type="radio" [(ngModel)]="acOrNonAc" value="Ac" name="acOrNonAc">AC
+                        </label>
+                        <label class="radio-inline">
+                          <input type="radio" [(ngModel)]="acOrNonAc" value="NonAc" name="acOrNonAc">NonAc
+                        </label>
+                      </div>
+                         
+                    </div>
+                </div>
+                </div>
+
+               
+            <div class="row"> 
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Select Owner</label>
+                        <select [(ngModel)]="onwerName" class="form-control">
+
+                            <option *ngFor="let owner of owners" value="{{owner}}">{{ owner.id }} {{owner.firstName}} {{owner.lastName}}</option>
+                        </select>
+                    </div>            
+                </div>
+                
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <textarea type="text" [(ngModel)]="comment" class="form-control"
+            placeholder="Enter Comment"></textarea>
+
+                    </div>
+             
+                </div>
+                
+            </div>
+
+            <button type="button" class="btnSubmit" (click)="save()">Save</button>
+
+        </div>
+    </div>
+</div>
+
