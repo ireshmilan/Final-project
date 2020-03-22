@@ -34,13 +34,13 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-cog"></i>
-          <span>Components</span>
+          <span>Cars</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Components:</h6>
-            <a class="collapse-item" href="buttons.html">Buttons</a>
-            <a class="collapse-item" href="cards.html">Cards</a>
+            <h6 class="collapse-header">Manage Cars:</h6>
+            <a class="collapse-item" routerLink="/createCar">Add</a>
+            <a class="collapse-item" routerLink="/update-car">Update</a>
           </div>
         </div>
       </li>
@@ -49,11 +49,11 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
           <i class="fas fa-fw fa-wrench"></i>
-          <span>Utilities</span>
+          <span>Rent</span>
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Utilities:</h6>
+            <h6 class="collapse-header">Rent Details:</h6>
             <a class="collapse-item" href="utilities-color.html">Colors</a>
             <a class="collapse-item" href="utilities-border.html">Borders</a>
             <a class="collapse-item" href="utilities-animation.html">Animations</a>
@@ -312,6 +312,27 @@
             <h1 class="h3 mb-0 text-gray-800">Cars</h1>
           </div>
 
+          <div class="row" >
+          <div class="col-xl-3 col-md-6 mb-4" *ngFor="let car of cars">
+            <div class="card border-left-primary shadow h-100 py-2" >
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{car.vehicleBrand}}</div>
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">{{car.vehicleModel.name}}</div>
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">{{car.registeredNumber}}</div>
+                    
+                    
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+
           <table style="width:100%" border="1">
             <tr>
               <th>Id</th>
@@ -323,7 +344,7 @@
               <th>Ac/NonAc</th>
               <th>Comment</th>
               <th>Created Date</th>
-              <th>Availability</th>
+              
               <th>Owner Id</th>
               <th>Model Name</th>
               <th>Model Year</th>
@@ -332,19 +353,19 @@
             </tr>
             <tr *ngFor="let car of cars">
               <td>{{car.id}}</td>
-              <td>{{car.registredNumber}}</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td>{{car.registeredNumber}}</td>
+              <td>{{car.registerdYear}}</td>
+              <td>{{car.fuleType}}</td>
+              <td>{{car.transmission}}</td>
+              <td>{{car.vehicleBrand}}</td>
+              <td>{{car.acOrNonAc}}</td>
+              <td>{{car.comment}}</td>
+              <td>{{car.createdDate}}</td>
+              <td>{{car.ownerId}}</td>
+              <td>{{car.vehicleModel.name}}</td>
+              <td>{{car.vehicleModel.color}}</td>
+              <td>{{car.vehicleModel.modelYear}}</td>
+              
             </tr>
             
           </table>

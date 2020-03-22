@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 
 @Injectable()
@@ -15,8 +16,12 @@ export class Services {
         this.http = http;
     }
 
-    saveCarDetails(car){
-        return this.http.post( this.serverUrl +'/service/save',car);
+    saveCarDetails(data):Observable<any>{
+        console.log('SERVICE');
+        console.log(data);
+        return this.http.post( this.serverUrl +'/service/save',data)
+        // .pipe(map())
+    
     }
 
     saveCustomerOwnerDetails(customer){

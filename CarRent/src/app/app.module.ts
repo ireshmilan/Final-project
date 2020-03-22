@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -12,7 +12,10 @@ import { Services } from './Services';
 import { from } from 'rxjs';
 import { RentDetailsComponent } from './component/rent-details/rent-details.component';
 import { DashBoardComponent } from './component/dash-board/dash-board.component';
-import { LoginComponent } from './login/login.component';
+import { LogingComponent } from './component/loging/loging.component';
+import { CarUpdateComponent } from './component/car-update/car-update.component';
+import { CarEditComponent } from './component/car-edit/car-edit.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -21,14 +24,19 @@ import { LoginComponent } from './login/login.component';
     CustomerOwnerRegisterComponent,
     RentDetailsComponent,
     DashBoardComponent,
-    LoginComponent
+    LogingComponent,
+    CarUpdateComponent,
+    CarEditComponent,
+    
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     BsDatepickerModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule
   ],
   providers: [Services],
   bootstrap: [AppComponent]
