@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CarService } from 'src/app/car.service';
+import { CarService } from 'src/app/services/car.service';
 import { Router } from '@angular/router';
 
 
@@ -22,12 +22,7 @@ tableData : any;
 
   this.router.navigate(['/edit-car', id]);
 
-
-
-
-
-
-
+  
  }
   ngOnInit() {
     this.carService.getAllCars()

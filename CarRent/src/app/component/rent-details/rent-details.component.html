@@ -1,6 +1,12 @@
 <div class="container register-form">
   <div class="form">
       <div class="note">
+          <p>User Registration</p>
+      </div>
+<form [formGroup]="userRegistration" (ngSubmit)="uploadSubmit()">
+<div class="container register-form">
+  <div class="form">
+      <div class="note">
           <p>Rent Details</p>
       </div>
 
@@ -79,3 +85,7 @@
   </div>
 </div>
 
+    
+</form>
+</div>
+</div>

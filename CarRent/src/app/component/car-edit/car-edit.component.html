@@ -8,7 +8,8 @@
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-              <input type="text" class="form-control" formControlName="registeredNumber"
+              <input type="text" class="form-control"
+                formControlName="registeredNumber"
                 placeholder="Enter Registered Number" [ngClass]="{ 'is-invalid':
                 submitted && controlerData.registeredNumber.errors }" />
               <div *ngIf="submitted && controlerData.registeredNumber.errors"
@@ -20,7 +21,8 @@
           </div>
           <div class="col-md-6">
             <div class="form-group">
-              <input type="text" class="form-control" formControlName="registerdYear"
+              <input type="text" numbersOnly class="form-control"
+                formControlName="registerdYear"
                 placeholder="Enter Register Year" [ngClass]="{ 'is-invalid':
                 submitted && controlerData.registerdYear.errors }" />
               <div *ngIf="submitted && controlerData.registerdYear.errors"
@@ -30,16 +32,33 @@
               </div>
             </div>
           </div>
-
-
         </div>
+
+
+
+        <div class="row" hidden >
+          <div class="col-md-6">
+            <div class="form-group">
+              <input type="text"  class="form-control" #data
+                formControlName="createdDate"
+                />
+             
+            </div>
+          </div>
+          
+          </div>
+  
+
+
+
+
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
               <select class="form-control" formControlName="vehicleBrand" #data
                 [ngClass]="{ 'is-invalid': submitted &&
                 controlerData.vehicleBrand.errors }">
-                <option>{{displaySelectData}}</option>
+                
                 <option *ngFor="let data of Type">{{data}}</option>
               </select>
               <div *ngIf="submitted && controlerData.vehicleBrand.errors"
@@ -54,7 +73,8 @@
         <div class="row">
           <div class="col-md-4">
             <div class="form-group">
-              <input type="text" class="form-control" formControlName="vehicleModel"
+              <input type="text" class="form-control"
+                formControlName="vehicleModel"
                 placeholder="Enter Vehicle Model" [ngClass]="{ 'is-invalid':
                 submitted && controlerData.vehicleModel.errors }" />
               <div *ngIf="submitted && controlerData.vehicleModel.errors"
@@ -66,7 +86,8 @@
           </div>
           <div class="col-md-4">
             <div class="form-group">
-              <input type="text" class="form-control" formControlName="modelYear"
+              <input type="text" class="form-control"
+                formControlName="modelYear"
                 placeholder="Enter Model Year" [ngClass]="{ 'is-invalid':
                 submitted && controlerData.modelYear.errors }" />
               <div *ngIf="submitted && controlerData.modelYear.errors"
@@ -142,12 +163,14 @@
 
 
         </div>
-        <!-- <div class="row">
+        <div class="row">
+          
               <div class="col-md-12">
                   <input type="file" accept=".png, .jpg, .jpeg" #fileInput  (change)="uploadFile($event)" class="form-control" formControlName = "photo">
               </div>
+              
           </div>
-                  <br> -->
+                  <br>
         <div class="row">
           <div class="col-md-12">
             <div class="form-group">

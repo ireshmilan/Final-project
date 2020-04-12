@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Services} from '../../Services';
+import {Services} from '../../services/Services';
 
 @Component({
   selector: 'app-customer-owner-register',

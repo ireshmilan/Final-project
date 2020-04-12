@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CarService } from 'src/app/car.service';
+import { CarService } from 'src/app/services/car.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { getQueryValue } from '@angular/core/src/view/query';
 
 
 @Component({
@@ -14,7 +15,12 @@ export class CarEditComponent implements OnInit {
   carDetailsEdit:FormGroup;
   submitted = false;
   selectValue:any;
-  fuleType=['Diesel','Petrol','Hibrid'];
+
+  Type = [ 'Toyota', 'Nissan', 'Mazda', 'Benz', 'Mitsubishi', 'Suzuki'];
+  fuelType = [ 'Diesel', 'Petrol', 'Hybrid'];
+  acNonAc = [ 'AC', 'Non Ac'];
+  tranmision = [ 'Auto', 'Manual'];
+
   constructor(
     private route: ActivatedRoute,
     private carService:CarService,
@@ -28,16 +34,17 @@ export class CarEditComponent implements OnInit {
     this.carDetailsEdit = this.formBuilder.group({
       registeredNumber: ['', Validators.required],
       registerdYear: ['', Validators.required],
-      fuleType: [''],
-      acNonAc: [''],
-      tranmision: [''],
-      vehicleBrand: [''],
-      comment: [''],
+      fuleType: ['', Validators.required],
+      acNonAc: ['', Validators.required],
+      tranmision: ['', Validators.required],
+      vehicleBrand: ['', Validators.required],
+      comment: ['', Validators.required],
       vehicleModel: ['', Validators.required],
       color: ['', Validators.required],
       modelYear: ['', Validators.required],
       ownerId: [''],
-      photo: ['']
+      photo: [''],
+      createdDate:['']
     });
     this.displayValueForm()
 
@@ -60,9 +67,15 @@ export class CarEditComponent implements OnInit {
        this.carDetailsEdit.controls['vehicleModel'].setValue(data[0].vehicleModel.name);
        this.carDetailsEdit.controls['color'].setValue(data[0].vehicleModel.color);
        this.carDetailsEdit.controls['modelYear'].setValue(data[0].vehicleModel.modelYear);
-       this.carDetailsEdit.controls['fuleType'].setValue(data[0].fuleType.name);
+       this.carDetailsEdit.controls['fuleType'].setValue(data[0].fuleType);
+       this.carDetailsEdit.controls['acNonAc'].setValue(data[0].acOrNonAc);
+       this.carDetailsEdit.controls['tranmision'].setValue(data[0].transmission);
        this.carDetailsEdit.controls['comment'].setValue(data[0].comment);
-       this.selectValue =  this.carDetailsEdit.controls['fuleType'].setValue(data[0].fuleType.name);
+       this.carDetailsEdit.controls['createdDate'].setValue(data[0].createdDate);
+       
+       
+       
+     
       },
       error=>{
         console.group(error);
@@ -74,7 +87,6 @@ export class CarEditComponent implements OnInit {
   }
 
   
-
 
 
 
@@ -101,7 +113,10 @@ export class CarEditComponent implements OnInit {
               "name": this.controlerData.vehicleModel.value,
               "color": this.controlerData.color.value,
               "modelYear": this.controlerData.modelYear.value
+              
             },
+            "createdDate":this.controlerData.createdDate.value
+            
             
           }
           console.log('SUBMIT');

@@ -3,133 +3,212 @@
         <div class="note">
             <p>Vehicle Registration</p>
         </div>
-<form [formGroup]="carDetailsregistration" (ngSubmit)="uploadSubmit()">
-        <div class="form-content">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <input type="text" class="form-control" formControlName ="registeredNumber"  placeholder="Enter Registered Number" [ngClass]="{ 'is-invalid': submitted && controlerData.registeredNumber.errors }"/>
-                      <div *ngIf="submitted && controlerData.registeredNumber.errors" class="invalid-feedback">
-                        <div *ngIf="controlerData.registeredNumber.errors.required">Registered Number is required</div>
-                    </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <input type="text" class="form-control" formControlName ="registerdYear"  placeholder="Enter Register Year" [ngClass]="{ 'is-invalid': submitted && controlerData.registerdYear.errors }"/>
-                      <div *ngIf="submitted && controlerData.registerdYear.errors" class="invalid-feedback">
-                        <div *ngIf="controlerData.registerdYear.errors.required">Registered Year is required</div>
-                    </div>
-                    </div>
-                </div>
-
-
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <select class="form-control" formControlName="vehicleBrand" #data [ngClass]="{ 'is-invalid': submitted && controlerData.vehicleBrand.errors }">
-                            
-                            <option *ngFor="let data of Type">{{data}}</option>
-                          </select>
-                          <div *ngIf="submitted && controlerData.vehicleBrand.errors" class="invalid-feedback">
-                            <div *ngIf="controlerData.vehicleBrand.errors.required">Select Brand Name</div>
-                          </div> 
-                </div>
-                
-</div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <input type="text" class="form-control" formControlName ="vehicleModel"  placeholder="Enter Vehicle Model" [ngClass]="{ 'is-invalid': submitted && controlerData.vehicleModel.errors }"/>
-                      <div *ngIf="submitted && controlerData.vehicleModel.errors" class="invalid-feedback">
-                        <div *ngIf="controlerData.vehicleModel.errors.required">Vehicle Model is Required</div>
-                    </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <input type="text" class="form-control" formControlName ="modelYear"  placeholder="Enter Model Year" [ngClass]="{ 'is-invalid': submitted && controlerData.modelYear.errors }"/>
-                      <div *ngIf="submitted && controlerData.modelYear.errors" class="invalid-feedback">
-                        <div *ngIf="controlerData.registerdYear.errors.required">Model Year is Required</div>
-                    </div>
-                    </div>
-                </div>
-
-               
-                    <div class="col-md-4">
+        <form [formGroup]="carDetailsregistration" (ngSubmit)="uploadSubmit()">
+            <div class="form-content">
+                <div class="row">
+                    <div class="col-md-6">
                         <div class="form-group">
-                            <input type="text" class="form-control" formControlName ="color"  placeholder="Enter Model Color" [ngClass]="{ 'is-invalid': submitted && controlerData.color.errors }"/>
-                          <div *ngIf="submitted && controlerData.color.errors" class="invalid-feedback">
-                            <div *ngIf="controlerData.color.errors.required">Model Color is Required</div>
-                        </div>
+                            <input type="text" class="form-control"
+                                formControlName="registeredNumber"
+                                placeholder="Enter Registered Number"
+                                [ngClass]="{ 'is-invalid': submitted &&
+                                controlerData.registeredNumber.errors }" />
+                            <div *ngIf="submitted &&
+                                controlerData.registeredNumber.errors"
+                                class="invalid-feedback">
+                                <div
+                                    *ngIf="controlerData.registeredNumber.errors.required">Registered
+                                    Number is required</div>
+                            </div>
                         </div>
                     </div>
-                    
-
-            </div>
-
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <select class="form-control" formControlName="fuleType" #data [ngClass]="{ 'is-invalid': submitted && controlerData.fuleType.errors }">
-                           
-                            <option *ngFor="let data of fuelType">{{data}}</option>
-                          </select>   <div *ngIf="submitted && controlerData.fuleType.errors" class="invalid-feedback">
-                        <div *ngIf="controlerData.fuleType.errors.required">Select Fuel Type</div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" class="form-control"
+                                formControlName="registerdYear"
+                                placeholder="Enter Register Year" [ngClass]="{
+                                'is-invalid': submitted &&
+                                controlerData.registerdYear.errors }" />
+                            <div *ngIf="submitted &&
+                                controlerData.registerdYear.errors"
+                                class="invalid-feedback">
+                                <div
+                                    *ngIf="controlerData.registerdYear.errors.required">Registered
+                                    Year is required</div>
+                            </div>
+                        </div>
                     </div>
+
+
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <select class="form-control"
+                                formControlName="vehicleBrand"
+                                (change)="removeDefualtValue()" #data
+                                [ngClass]="{ 'is-invalid': submitted &&
+                                controlerData.vehicleBrand.errors }">
+
+                                <option *ngFor="let data of Type">{{data}}</option>
+                            </select>
+                            <div *ngIf="submitted &&
+                                controlerData.vehicleBrand.errors"
+                                class="invalid-feedback">
+                                <div
+                                    *ngIf="controlerData.vehicleBrand.errors.required">Select
+                                    Brand Name</div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <select class="form-control" formControlName="acNonAc" #data [ngClass]="{ 'is-invalid': submitted && controlerData.acNonAc.errors }">
-                           
-                            <option *ngFor="let data of acNonAc">{{data}}</option>
-                          </select>   <div *ngIf="submitted && controlerData.acNonAc.errors" class="invalid-feedback">
-                        <div *ngIf="controlerData.acNonAc.errors.required">Fuel is required</div>
-                    </div>
-                    </div>
-                </div>
-
-               
+                <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
-                            <select class="form-control" formControlName="tranmision" #data [ngClass]="{ 'is-invalid': submitted && controlerData.tranmision.errors }">
-                           
+                            <input type="text" class="form-control"
+                                formControlName="vehicleModel"
+                                placeholder="Enter Vehicle Model" [ngClass]="{
+                                'is-invalid': submitted &&
+                                controlerData.vehicleModel.errors }" />
+                            <div *ngIf="submitted &&
+                                controlerData.vehicleModel.errors"
+                                class="invalid-feedback">
+                                <div
+                                    *ngIf="controlerData.vehicleModel.errors.required">Vehicle
+                                    Model is Required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input type="text" class="form-control"
+                                formControlName="modelYear" placeholder="Enter
+                                Model Year" [ngClass]="{ 'is-invalid': submitted
+                                && controlerData.modelYear.errors }" />
+                            <div *ngIf="submitted &&
+                                controlerData.modelYear.errors"
+                                class="invalid-feedback">
+                                <div
+                                    *ngIf="controlerData.registerdYear.errors.required">Model
+                                    Year is Required</div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input type="text" class="form-control"
+                                formControlName="color" placeholder="Enter Model
+                                Color" [ngClass]="{ 'is-invalid': submitted &&
+                                controlerData.color.errors }" />
+                            <div *ngIf="submitted && controlerData.color.errors"
+                                class="invalid-feedback">
+                                <div
+                                    *ngIf="controlerData.color.errors.required">Model
+                                    Color is Required</div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <select class="form-control"
+                                formControlName="fuleType"
+                                (change)="removeDefualtFuelValue()" #data
+                                [ngClass]="{ 'is-invalid': submitted &&
+                                controlerData.fuleType.errors }">
+
+                                <option *ngFor="let data of fuelType">{{data}}</option>
+                            </select> <div *ngIf="submitted &&
+                                controlerData.fuleType.errors"
+                                class="invalid-feedback">
+                                <div
+                                    *ngIf="controlerData.fuleType.errors.required">Select
+                                    Fuel Type</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <select class="form-control"
+                                formControlName="acNonAc"
+                                (change)="removeDefualtAcValue()" #data
+                                [ngClass]="{ 'is-invalid': submitted &&
+                                controlerData.acNonAc.errors }">
+
+                                <option *ngFor="let data of acNonAc">{{data}}</option>
+                            </select> <div *ngIf="submitted &&
+                                controlerData.acNonAc.errors"
+                                class="invalid-feedback">
+                                <div
+                                    *ngIf="controlerData.acNonAc.errors.required">Select
+                                    Ac Type</div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <select class="form-control"
+                                formControlName="tranmision"
+                                (change)="removeDefualtTransmisionValue()" #data
+                                [ngClass]="{ 'is-invalid': submitted &&
+                                controlerData.tranmision.errors }">
+
                                 <option *ngFor="let data of tranmision">{{data}}</option>
-                              </select>   <div *ngIf="submitted && controlerData.tranmision.errors" class="invalid-feedback">
-                            <div *ngIf="controlerData.tranmision.errors.required">Fuel is required</div>
-                        </div>
+                            </select> <div *ngIf="submitted &&
+                                controlerData.tranmision.errors"
+                                class="invalid-feedback">
+                                <div
+                                    *ngIf="controlerData.tranmision.errors.required">Select
+                                    Transmission Type</div>
+                            </div>
                         </div>
                     </div>
-                    
 
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <input type="file" accept=".png, .jpg, .jpeg" #fileInput  (change)="uploadFile($event)" class="form-control" formControlName = "photo">
+
                 </div>
-            </div>
-                    <br>
-
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <textarea class="form-control" formControlName = "comment" rows="4" placeholder="Enter Comment"></textarea>      <div *ngIf="submitted && controlerData.registeredNumber.errors" class="invalid-feedback">
-                        <div *ngIf="controlerData.registeredNumber.errors.required">Comment is required</div>
-                    </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <input type="file" accept=".png, .jpg, .jpeg" #fileInput
+                            (change)="uploadFile($event)" class="form-control"
+                            formControlName="photo">
                     </div>
                 </div>
-                    
+                <br>
 
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <textarea class="form-control" formControlName="comment"
+                                rows="4" placeholder="Enter Comment"
+                                [ngClass]="{ 'is-invalid': submitted &&
+                                controlerData.comment.errors }"></textarea>
+                            <div *ngIf="submitted &&
+                                controlerData.comment.errors"
+                                class="invalid-feedback">
+                                <div
+                                    *ngIf="controlerData.comment.errors.required">Comment
+                                    is required</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+                <button type="submit" class="btnSubmit">Save</button>
             </div>
 
-        </div>
-            <button type="submit" class="btnSubmit">Save</button>
 
-     
-   </form>
+
+        </form>
     </div>
 </div>
-
