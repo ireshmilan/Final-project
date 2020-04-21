@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class CarUpdateComponent implements OnInit {
 
 tableData : any;
+p:number=1;
  constructor(private carService:CarService,
   private router:Router) {
 

@@ -15,12 +15,15 @@ import { DashBoardComponent } from './component/dash-board/dash-board.component'
 import { LogingComponent } from './component/loging/loging.component';
 import { CarUpdateComponent } from './component/car-update/car-update.component';
 import { CarEditComponent } from './component/car-edit/car-edit.component';
-import {NgxPaginationModule} from 'ngx-pagination';
 import { SharedModule } from './shared/shared.module';
 import { UserRegistrationComponent } from './component/user-registration/user-registration.component';
 import { UserUpdateComponent } from './component/user-update/user-update.component';
 import { UserEditComponent } from './component/user-edit/user-edit.component';
-
+import {Ng2SearchPipeModule} from 'ng2-search-filter';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { SideBarComponent } from './component/side-bar/side-bar.component';
+import { NavBarComponent } from './component/nav-bar/nav-bar.component';
+import { RentVehicleTableComponent } from './component/rent-vehicle-table/rent-vehicle-table.component';
 
 
 @NgModule({
@@ -36,6 +39,10 @@ import { UserEditComponent } from './component/user-edit/user-edit.component';
     UserRegistrationComponent,
     UserUpdateComponent,
     UserEditComponent,
+    SideBarComponent,
+    NavBarComponent,
+    RentVehicleTableComponent,
+ 
     
     
   ],
@@ -47,6 +54,7 @@ import { UserEditComponent } from './component/user-edit/user-edit.component';
     BsDatepickerModule.forRoot(),
     HttpClientModule,
     NgxPaginationModule,
+    Ng2SearchPipeModule,
     
     
   ],

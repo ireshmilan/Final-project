@@ -11,7 +11,7 @@ import { error } from 'util';
 export class UserUpdateComponent implements OnInit {
 
   tableData : any;
-
+  p:number=1;
 
   constructor(private router:Router, private services:Services) { }
 

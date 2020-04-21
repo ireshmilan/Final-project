@@ -15,8 +15,9 @@ export class AuthenticationService {
       return this.httpClient.post<any>('http://localhost:7676/authenticate',formData,{headers: headers}).pipe(
      map(
        userData => {
-        // sessionStorage.setItem('username',username);
+      // sessionStorage.setItem('username',username);
         sessionStorage.setItem('token', 'Bearer '+userData.token)
+        console.log("dddddddddddddddddddddddddddddddd"+userData.token)
         return true;
        } 
      )

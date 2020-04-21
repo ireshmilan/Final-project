@@ -8,6 +8,8 @@ import { CarUpdateComponent } from './component/car-update/car-update.component'
 import { UserRegistrationComponent } from './component/user-registration/user-registration.component';
 import { UserUpdateComponent } from './component/user-update/user-update.component';
 import { UserEditComponent } from './component/user-edit/user-edit.component';
+import { RentDetailsComponent } from './component/rent-details/rent-details.component';
+import { RentVehicleTableComponent } from './component/rent-vehicle-table/rent-vehicle-table.component';
 
 const routes: Routes = [
   { path: '', component: LogingComponent },
@@ -18,6 +20,8 @@ const routes: Routes = [
   {path:'userRegistration', component:UserRegistrationComponent},
   {path:'userUpdate', component:UserUpdateComponent},
   {path:'userEdit/:id', component:UserEditComponent},
+  {path:'addRent/:id', component:RentDetailsComponent},
+  {path:'selectVehicle', component:RentVehicleTableComponent},
   
     
 ];

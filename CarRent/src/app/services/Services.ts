@@ -6,10 +6,13 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class Services {
 
-    private serverUrl: string ='http://localhost:8383';
+    private serverUrl: string = 'http://localhost:9923';
     
     private serverUrl2: string ='http://localhost:7676';
 
+    private serverUrl3: string ='http://localhost:8686';
+    
+    register
 
     constructor(private http: HttpClient) {
         this.http = http;
@@ -28,11 +31,19 @@ export class Services {
     }
 
     saveRentDetails(rent){
-        return this.http.post(this.serverUrl + '/service/save',rent)
+        return this.http.post(this.serverUrl3 + '/service/save',rent)
     }
+    
     getAllCars(){
         return this.http.get( this.serverUrl +'/service/findAllCars');
     }
+    // getAllCars(){
+    //     const headers= new HttpHeaders({
+    //         'Content-Type' : 'application/json',
+    //         'Authorization' : sessionStorage.getItem('token')
+    //     })
+    //     return this.http.get( this.serverUrl +'/service/findAllCars',{headers:headers});
+    // }
     getUsers(){
         return this.http.get( this.serverUrl2 +'/get')
     }

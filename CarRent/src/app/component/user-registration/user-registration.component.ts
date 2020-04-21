@@ -108,7 +108,8 @@ export class UserRegistrationComponent implements OnInit {
           "lane": this.controlerData.lane.value,
           "city": this.controlerData.city.value
         },
-        "telephone":[{"telephone":this.controlerData.telephone1.value},{"telephone":this.controlerData.telephone2.value}]
+        "telephone":[{"telephone":this.controlerData.telephone1.value},{"telephone":this.controlerData.telephone2.value}],
+        
         
         
       }

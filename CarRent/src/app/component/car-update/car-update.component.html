@@ -1,82 +1,98 @@
-<div class="container register-form">
-  <div class="form">
-      <div class="note">
-          <p>Vehicle Update</p>
-      </div>
-<form [formGroup]="carDetailsUpdate" (ngSubmit)="uploadSubmit()">
-  <!-- DataTales Example -->
-  <div class="card shadow mb-4">
-    
-    <div class="card-body">
-      <div class="table-responsive">
-        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-          <thead>
-            <tr>
-              <th>Registerd Number</th>
-              <th>Registerd Year</th>
-              <th>Brand</th>
-              <th>Model</th>
-              
-              <th>Color</th>
-              <th>Fuel Type</th>
-              <th>Transmission</th>
-              <th>Edit</th>
-            </tr>
-          </thead>
-          <tfoot>
-            <tr>
-              <th>Registerd Number</th>
-              <th>Registerd Year</th>
-              <th>Brand</th>
-              <th>Model</th>
-              
-              <th>Color</th>
-              <th>Fuel Type</th>
-              <th>Transmission</th>
-              <th>Edit</th>
-            </tr>
-          </tfoot>
-          <tbody>
-            
-            <tr *ngFor="
-                                        let data of tableData
-                                            
-                                    ">
-                  
-                 
-                  <td style="text-align: center;">
-                    {{ data.registeredNumber }}
-                  </td>
-                  <td style="text-align: center;">
-                    {{ data.registerdYear }} 
-                  </td>
-                  <td style="text-align: center;">
-                    {{ data.vehicleBrand }}
-                  </td>
-                  <td style="text-align: center;">
-                    {{ data.vehicleModel.name }} {{data.vehicleModel.modelYear}}
-                  </td>
-                  <td style="text-align: center;">
-                    {{ data.vehicleModel.color }}
-                  </td>
-                  <td style="text-align: center;">
-                    {{ data.fuleType }}
-                  </td>
-                  <td style="text-align: center;">
-                    {{ data.transmission }}
-                  </td>
-                  <td style="text-align: center;">
-                   <button type="button" class="btn btn-primary btn-sm"    (click)="RoutePage(data)">Edit</button>
-                  </td>
-                
-                </tr>
+<div id="wrapper">
+  <app-side-bar></app-side-bar>
 
-          </tbody>
-        </table>
-        <!-- <pagination-controls (pageChange)="p = $event" style="float:right;"></pagination-controls> -->
+  <!-- Content Wrapper -->
+  <div id="content-wrapper" class="d-flex flex-column">
+
+    <!-- Main Content -->
+    <div id="content">
+
+      <!-- Topbar -->
+      <app-nav-bar></app-nav-bar>
+      <!-- End of Topbar -->
+      <!-- Begin Page Content -->
+
+      <div class="form">
+        <div class="note">
+         
+          
+            <p>
+              Vehicle Update
+            </p>
+           
+          
+        </div>
+        <br>
+        <div class="form-group form-inline">
+          <input class="form-control ml-2" type="text" name="searchText"
+            placeholder="Search...."
+            [(ngModel)]="searchText" />
+        </div>
+        <form [formGroup]="carDetailsUpdate" (ngSubmit)="uploadSubmit()">
+          <!-- DataTales Example -->
+          <div class="card shadow mb-4">
+
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%"
+                  cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Registerd Number</th>
+                      <th>Registerd Year</th>
+                      <th>Brand</th>
+                      <th>Model</th>
+
+                      <th>Color</th>
+                      <th>Fuel Type</th>
+                      <th>Transmission</th>
+                      <th>Edit</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+
+                    <tr *ngFor="let data of tableData |filter:searchText |paginate:{itemsPerPage:7,currentPage:p};">
+
+
+                      <td style="text-align: center;">
+                        {{ data.registeredNumber }}
+                      </td>
+                      <td style="text-align: center;">
+                        {{ data.registerdYear }}
+                      </td>
+                      <td style="text-align: center;">
+                        {{ data.vehicleBrand }}
+                      </td>
+                      <td style="text-align: center;">
+                        {{ data.vehicleModel.name }}
+                        {{data.vehicleModel.modelYear}}
+                      </td>
+                      <td style="text-align: center;">
+                        {{ data.vehicleModel.color }}
+                      </td>
+                      <td style="text-align: center;">
+                        {{ data.fuleType }}
+                      </td>
+                      <td style="text-align: center;">
+                        {{ data.transmission }}
+                      </td>
+                      <td style="text-align: center;">
+                        <button type="button" class="btn btn-primary btn-sm"
+                          (click)="RoutePage(data)">Edit</button>
+                      </td>
+
+                    </tr>
+
+                  </tbody>
+                </table>
+                <pagination-controls (pageChange)="p=$event"></pagination-controls>
+                <!-- <pagination-controls (pageChange)="p = $event" style="float:right;"></pagination-controls> -->
+              </div>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   </div>
-</form>
-</div>
 </div>
