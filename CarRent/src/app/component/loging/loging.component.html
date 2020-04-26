@@ -55,7 +55,7 @@
 
                   <button type="submit" class="btn btn-primary btn-user
                     btn-block">Login</button>
-
+                    <div *ngIf="error" style="color: red;"><b>{{error}}</b></div>
                   <hr>
                   <a href="index.html" class="btn btn-google btn-user
                     btn-block">

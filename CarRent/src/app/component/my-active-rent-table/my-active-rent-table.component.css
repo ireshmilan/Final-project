@@ -8,53 +8,16 @@
     line-height: 80px;
     font-size: 30px;
 }
-
-
-.active
-{
-    border-radius:1.5rem;
-    text-align: center;
-    height: 40px;
-    background: #ec5252;
-    color: #fff;
-    font-weight: normal;
-    line-height: 10px;
-    font-size: 20px;
-}
-
 .form-content
 {
-    padding: 2%;
+    padding: 5%;
     border: 1px solid #ced4da;
     margin-bottom: 2%;
+    background:  rgb(135, 193, 219);
 }
 .form-control{
     border-radius:1.5rem;
 }
-
-
-
-.btnSubmit
-{
-    border:none;
-    border-radius:1.5rem;
-    padding: 1%;
-    width: 20%;
-    cursor: pointer;
-    background: #0062cc;
-    color: #fff;
-}
-.radio-inline
-{
-    text-align: center;
-    width: 80px;
-
-
-}
-
-
-
-
 .btnSubmit
 {
     border:none;
@@ -2329,6 +2292,12 @@
     color: #fff;
     background-color: #4e73df;
     border-color: #4e73df;
+  }
+
+  .btn-primary1 {
+    color: #fff;
+    background-color: #f1323c;
+    border-color: #f10404;
   }
   
   .btn-primary:hover {

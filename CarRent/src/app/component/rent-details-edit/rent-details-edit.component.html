@@ -1,0 +1,184 @@
+<div id="wrapper">
+  <app-side-bar></app-side-bar>
+
+  <!-- Content Wrapper -->
+  <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+          <!-- Topbar -->
+          <app-nav-bar></app-nav-bar>
+          <!-- End of Topbar -->
+          <!-- Begin Page Content -->
+
+
+          <div class="form">
+              <div class="note">
+                  <p>Rent Detail</p>
+              </div>
+              <form [formGroup]="rentDetailsEdit"
+                  (ngSubmit)="uploadSubmit()">
+                  <div class="container register-form">
+                      <div class="form">
+
+                          <div class="form-content">
+
+                              <div class="row" hidden>
+                                 
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control"
+                                        formControlName="createdDate"
+                                        placeholder="Customer Id" />             
+                                </div>
+                            </div>
+                              </div>
+
+                              <div class="row">
+                                <div class="col-md-4">
+                                  <label>Customer Id</label>
+                                  <div class="form-group">
+                                      <input type="text"  READONLY class="form-control"
+                                          formControlName="customerId"
+                                          placeholder="Customer Id" />             
+                                  </div>
+                              </div>
+                                <div class="col-md-4">
+                                    <label>Customer Name</label>
+                                  <div class="form-group">
+                                    <input type="text" READONLY class="form-control"
+                                      formControlName="customerName"
+                                      placeholder="Vehicle id" />
+                                   
+                                  </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label >Id Card Number</label>
+                                    <div class="form-group">
+                                      <input type="text" READONLY class="form-control"
+                                        formControlName="idNo"
+                                        placeholder="registerdNo" />
+                                     
+                                    </div>
+                                  </div>
+
+                              </div>
+
+
+                              <div class="row">
+                                  <div class="col-md-4">
+                                      <label>Vehicle Id</label>
+                                    <div class="form-group">
+                                      <input type="text" READONLY class="form-control"
+                                        formControlName="carId"
+                                        placeholder="Vehicle id" />
+                                     
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4">
+                                      <label >Registerd No</label>
+                                      <div class="form-group">
+                                        <input type="text" READONLY class="form-control"
+                                          formControlName="registeredNumber"
+                                          placeholder="registerdNo" />
+                                       
+                                      </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                      <label >Model</label>
+                                      <div class="form-group">
+                                        <input type="text" READONLY class="form-control"
+                                          formControlName="model"
+                                          placeholder="model" />
+                                       
+                                      </div>
+                                    </div>
+                              </div>
+
+
+                              <div class="row">
+                              <div class="col-md-6">
+                                  <label >From Date</label>
+                                  <div class="form-group">
+                                  <input type="date" class="form-control form-control-user" formControlName="startDate" placeholder="startDate" [ngClass]="{ 'is-invalid': submitted && controlerData.startDate.errors }"/>
+                                  <div *ngIf="submitted && controlerData.startDate.errors" class="invalid-feedback">
+                                    <div *ngIf="controlerData.startDate.errors.required">Start Date is required</div>
+                                </div>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                  <label >To Date</label>
+                                  <div class="form-group">
+                                  <input type="date" class="form-control form-control-user" formControlName="endDate" placeholder="endDate" [ngClass]="{ 'is-invalid': submitted && controlerData.endDate.errors }"/>
+                                  <div *ngIf="submitted && controlerData.endDate.errors" class="invalid-feedback">
+                                    <div *ngIf="controlerData.endDate.errors.required">End Date is required</div>
+                                </div>
+                                </div>
+                              </div>
+                              </div>
+
+
+                              <div class="row">
+                                  <div class="col-md-6">
+                                    <label>From</label>
+                                    <div class="form-group">
+                                      <input type="text" class="form-control"
+                                        formControlName="startLocation"
+                                        placeholder="Start Location " [ngClass]="{
+                                        'is-invalid':
+                                        submitted && controlerData.startLocation.errors }" />
+                                      <div *ngIf="submitted &&
+                                        controlerData.startLocation.errors"
+                                        class="invalid-feedback">
+                                        <div *ngIf="controlerData.startLocation.errors.required">Start Location is Required</div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <label>To</label>
+                                    <div class="form-group">
+                                      <input type="text" numbersOnly class="form-control"
+                                        formControlName="endLocation"
+                                        placeholder="End Location" [ngClass]="{ 'is-invalid':
+                                        submitted && controlerData.endLocation.errors }" />
+                                      <div *ngIf="submitted && controlerData.endLocation.errors"
+                                        class="invalid-feedback">
+                                        <div *ngIf="controlerData.endLocation.errors.required">End Location is Required</div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+
+                              <div class="row">
+                                  <div class="col-md-12">
+                                    <label>Comment</label>
+                                      <div class="form-group">
+                                          <textarea class="form-control" formControlName="comment"
+                                          rows="4"
+                                          placeholder="Enter Comment" [ngClass]="{ 'is-invalid':
+                                          submitted && controlerData.comment.errors }"></textarea>
+                                          <div *ngIf="submitted && controlerData.comment.errors"
+                                        class="invalid-feedback">
+                                        <div *ngIf="controlerData.comment.errors.required">Comment is Required</div>
+                                      </div>
+                                      </div>
+
+                                  </div>
+
+                              </div>
+
+                              <button type="submit" class="btnSubmit">Update</button>
+
+                          </div>
+                      </div>
+                  </div>
+
+
+              </form>
+          </div>
+      </div>
+  </div>
+
+</div>

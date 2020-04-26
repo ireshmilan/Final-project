@@ -1,0 +1,116 @@
+<div id="wrapper">
+  <app-side-bar></app-side-bar>
+
+  <!-- Content Wrapper -->
+  <div id="content-wrapper" class="d-flex flex-column">
+
+    <!-- Main Content -->
+    <div id="content">
+
+      <!-- Topbar -->
+      <app-nav-bar></app-nav-bar>
+      <!-- End of Topbar -->
+      <!-- Begin Page Content -->
+
+      <div class="form">
+        <div class="note">
+         
+          
+            <p>
+              My Active Rent Details
+            </p>
+           
+          
+        </div>
+        <br>
+        <div class="form-group form-inline">
+          <input class="form-control ml-2" type="text" name="searchText"
+            placeholder="Search...."
+            [(ngModel)]="searchText" />
+        </div>
+        <form [formGroup]="rentDetails" (ngSubmit)="uploadSubmit()">
+          <!-- DataTales Example -->
+          <div class="card shadow mb-4">
+
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%"
+                  cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Rent Id</th>
+                      <th>Rent Created Date</th>
+                      <th>Vehicle</th>
+                      <th>Registerd No</th>
+                      
+
+                      <th>From Date</th>
+                      <th>To Date</th>
+                      <th>From Location</th>
+                      <th>To Location</th>
+                      <th>Comment</th>
+                      <th>Update</th>
+                      <th>Cancel</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+
+                    <tr *ngFor="let data of tableData |filter:searchText |paginate:{itemsPerPage:7,currentPage:p};">
+                     
+                      <td style="text-align: center;">
+                        {{ data.id }}
+                      </td>
+
+                      <td style="text-align: center;">
+                        {{ data.createdDate }}
+                      </td>
+                      <td style="text-align: center;">
+                        {{ data.car[0].vehicleBrand }}
+                        {{ data.car[0].vehicleModel.name }}
+                        {{data.car[0].vehicleModel.modelYear}}
+                      </td>
+                      <td style="text-align: center;">
+                        {{ data.car[0].registeredNumber }}
+                      </td>
+                     
+                      <td style="text-align: center;">
+                        {{ data.needDate }}
+                      </td>
+                      <td style="text-align: center;">
+                        {{ data.endDate }}
+                      </td>
+                      <td style="text-align: center;">
+                        {{ data.start }}
+                      </td>
+                      <td style="text-align: center;">
+                        {{ data.end }}
+                      </td>
+                      <td style="text-align: center;">
+                        {{ data.comments }}
+                      </td>
+                      
+                      <td style="text-align: center;">
+                        <button type="button" class="btn btn-primary btn-sm"
+                          (click)="RoutePage(data)">Update</button>
+                      </td>
+
+                      <td style="text-align: center;">
+                        <button type="button" class="btn btn-primary1 btn-sm"
+                          (click)="RoutePageCancel(data)">Cancel</button>
+                      </td>
+
+                    </tr>
+
+                  </tbody>
+                </table>
+                <pagination-controls (pageChange)="p=$event"></pagination-controls>
+                <!-- <pagination-controls (pageChange)="p = $event" style="float:right;"></pagination-controls> -->
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -20,6 +20,12 @@ export class CarService {
 
     return this.http.put(this.serverUrl + '/service/update', carsData);
   }
+
+
+  deleteCar(carsData) {
+
+    return this.http.put(this.serverUrl + '/service/delete', carsData);
+  }
   
   getById(id) {
     return this.http.get(this.serverUrl + `/service/findAllCars/${id}`)

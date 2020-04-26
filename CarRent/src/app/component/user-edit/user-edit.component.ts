@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Services } from 'src/app/services/Services';
 import { ActivatedRoute } from '@angular/router';
 import { error } from 'util';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-user-edit',
@@ -15,7 +16,7 @@ export class UserEditComponent implements OnInit {
   userEdit:FormGroup;
   submitted = false;
   selectValue:any;
-
+  sites = [ "Active", "Inactive"];
   gender = [ 'Male', 'Female'];
 
   constructor(private services:Services,
@@ -30,14 +31,18 @@ this.userEdit = this.formBuilder.group({
   idCard:['',Validators.required],
   birthDay:['',Validators.required],
   gender:['',Validators.required],
-  telephone1:['',Validators.required],
-  telephone2:['',Validators.required],
+  telephone1: ['', [Validators.required, Validators.pattern(/^(?:0|94|\+94|0094)?(?:(11|21|23|24|25|26|27|31|32|33|34|35|36|37|38|41|45|47|51|52|54|55|57|63|65|66|67|81|91)(0|2|3|4|5|7|9)|7(0|1|2|5|6|7|8)\d)\d{6}$/)]],
+  telephone2: ['', [Validators.required, Validators.pattern(/^(?:0|94|\+94|0094)?(?:(11|21|23|24|25|26|27|31|32|33|34|35|36|37|38|41|45|47|51|52|54|55|57|63|65|66|67|81|91)(0|2|3|4|5|7|9)|7(0|1|2|5|6|7|8)\d)\d{6}$/)]],
+
   no:['',Validators.required],
   lane:['',Validators.required],
   city:['',Validators.required],
   username:[''],
+  active : [''],
   password:[''],
-  joinedDate:['']
+  joinedDate:[''],
+  role:[''],
+
   
 });
 this.displayValueForm()
@@ -46,9 +51,10 @@ this.displayValueForm()
 
   displayValueForm(){
     this.id = (this.route.snapshot.paramMap.get('id'));
-    
+   // this.userForm.patchValue({gender:'male', tc:true});
     this.services.getUsersById(this.id).subscribe(
       data=>{
+        console.log(data[0]);
         this.userEdit.controls['firstName'].setValue(data[0].firstName);
         this.userEdit.controls['lastName'].setValue(data[0].lastName);
         this.userEdit.controls['email'].setValue(data[0].email);
@@ -63,6 +69,9 @@ this.displayValueForm()
         this.userEdit.controls['username'].setValue(data[0].username);
         this.userEdit.controls['password'].setValue(data[0].password);
         this.userEdit.controls['joinedDate'].setValue(data[0].joinedDate);
+        this.userEdit.controls['active'].setValue(data[0].activity);
+        this.userEdit.controls['role'].setValue(data[0].role);
+        
       },
       error=>{
         console.log(error);
@@ -82,8 +91,11 @@ this.displayValueForm()
   }
 
   uploadSubmit() {
-    this.submitted = true;
 
+    this.submitted = true;
+    console.log('dsdaasdsa')
+  console.log(this.controlerData.active.value);
+    
     if (this.userEdit.valid) {
       let userData = {
         "id": this.id,
@@ -93,6 +105,8 @@ this.displayValueForm()
         "gender": this.controlerData.gender.value,
         "dateOfBirth": this.controlerData.birthDay.value,
         "idCardNumber": this.controlerData.idCard.value,
+        "activity" : Number(this.controlerData.active.value),
+
         
         "address": {
           "no": this.controlerData.no.value,
@@ -112,10 +126,12 @@ this.displayValueForm()
         "username": this.controlerData.username.value,
         "password": this.controlerData.password.value,
         "joinedDate": this.controlerData.joinedDate.value,
-        
+        "role":this.controlerData.role.value,
         
         
       }
+
+      
       console.log('SUBMIT');
       console.log(userData);
       //image eka yane Sting eka
@@ -128,6 +144,13 @@ this.displayValueForm()
             console.log(response);
             this.submitted = false;
             this.userEdit.reset();
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'User updated',
+              showConfirmButton: false,
+              timer: 2500
+            })
           },
           error => {
             console.log(error);

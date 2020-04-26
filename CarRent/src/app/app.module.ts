@@ -24,6 +24,16 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { SideBarComponent } from './component/side-bar/side-bar.component';
 import { NavBarComponent } from './component/nav-bar/nav-bar.component';
 import { RentVehicleTableComponent } from './component/rent-vehicle-table/rent-vehicle-table.component';
+import { LogingUserUpdateComponent } from './component/loging-user-update/loging-user-update.component';
+import { CarDeleteTableComponent } from './component/car-delete-table/car-delete-table.component';
+import { CarDeleteComponent } from './component/car-delete/car-delete.component';
+import { RentDetailsTableComponent } from './component/rent-details-table/rent-details-table.component';
+import { AuthGuard } from './_helpers/auth.guard';
+import { CarCardComponent } from './component/car-card/car-card.component';
+import { RentDetailsEditComponent } from './component/rent-details-edit/rent-details-edit.component';
+import { MyActiveRentTableComponent } from './component/my-active-rent-table/my-active-rent-table.component';
+import { MyPreviousRentTableComponent } from './component/my-previous-rent-table/my-previous-rent-table.component';
+import { MyActiveRentUpdateComponent } from './component/my-active-rent-update/my-active-rent-update.component';
 
 
 @NgModule({
@@ -42,6 +52,15 @@ import { RentVehicleTableComponent } from './component/rent-vehicle-table/rent-v
     SideBarComponent,
     NavBarComponent,
     RentVehicleTableComponent,
+    LogingUserUpdateComponent,
+    CarDeleteTableComponent,
+    CarDeleteComponent,
+    RentDetailsTableComponent,
+    CarCardComponent,
+    RentDetailsEditComponent,
+    MyActiveRentTableComponent,
+    MyPreviousRentTableComponent,
+    MyActiveRentUpdateComponent,
  
     
     
@@ -58,7 +77,7 @@ import { RentVehicleTableComponent } from './component/rent-vehicle-table/rent-v
     
     
   ],
-  providers: [Services],
+  providers: [AuthGuard,Services],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

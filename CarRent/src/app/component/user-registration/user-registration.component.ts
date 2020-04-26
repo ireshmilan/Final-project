@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Services } from '../../services/Services';
 import { PasswordStrengthValidator } from 'src/app/shared/password-strength.validators';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2'
 
 
 @Component({
@@ -33,8 +34,10 @@ export class UserRegistrationComponent implements OnInit {
       idNumber: ['', Validators.required],
       birthDay: ['', Validators.required],
       gender: ['', Validators.required],
-      telephone1: ['', Validators.required],
-      telephone2: ['', Validators.required],
+
+      telephone1: ['', [Validators.required, Validators.pattern(/^(?:0|94|\+94|0094)?(?:(11|21|23|24|25|26|27|31|32|33|34|35|36|37|38|41|45|47|51|52|54|55|57|63|65|66|67|81|91)(0|2|3|4|5|7|9)|7(0|1|2|5|6|7|8)\d)\d{6}$/)]],
+      telephone2: ['', [Validators.required, Validators.pattern(/^(?:0|94|\+94|0094)?(?:(11|21|23|24|25|26|27|31|32|33|34|35|36|37|38|41|45|47|51|52|54|55|57|63|65|66|67|81|91)(0|2|3|4|5|7|9)|7(0|1|2|5|6|7|8)\d)\d{6}$/)]],
+    
       no: ['', Validators.required],
       lane: ['', Validators.required],
       city: ['', Validators.required],
@@ -130,6 +133,13 @@ export class UserRegistrationComponent implements OnInit {
             this.router.navigate([""]);
             this.submitted = false;
             this.userRegistration.reset();
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Successfully Registerd!',
+              showConfirmButton: false,
+              timer: 2500
+            })
           },
           error => {
             console.log(error);

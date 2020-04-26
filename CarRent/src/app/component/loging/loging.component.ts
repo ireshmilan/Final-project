@@ -16,6 +16,8 @@ export class LogingComponent implements OnInit {
   invalidLogin = false
   loginForm
 
+  error =false;
+
   constructor(private router:Router,
     private authenticationService:AuthenticationService,
     private formBuilder:FormBuilder,
@@ -45,12 +47,23 @@ export class LogingComponent implements OnInit {
 
   login(data) {
     this.submitted = true;
-    this.authenticationService.authenticate(JSON.stringify(data)).subscribe(res=>{
+    this.authenticationService.authenticate(JSON.stringify(data)).
+    subscribe(
+      res=>{
       console.log("response",res);
-      this.router.navigate(['/dashBoard'])
-    })
+
+
+     
+      this.router.navigate(['/dashBoard']);
+    },
+    error=>{
+      console.log(error);
+    }
+    )
   
   }
+
+  
 
 }
 

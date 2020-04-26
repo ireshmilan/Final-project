@@ -14,12 +14,12 @@
 
       <div class="form">
         <div class="note">
-          <p>User Update</p>
+          <p>My Profile</p>
         </div>
-        <form [formGroup]="userEdit" (ngSubmit)="uploadSubmit()">
+        <form [formGroup]="loginUserUpdate" (ngSubmit)="uploadSubmit()">
           <div class="form-content">
 
-            <div class="row">
+            <div class="row" hidden>
              
                 <div class="form-group">
                 
@@ -191,16 +191,14 @@
             <div class="form-group row">
               <div class="col-sm-6 mb-3 mb-sm-0">
                 <input type="text" class="form-control form-control-user"
-                  formControlName="telephone1" placeholder="Mobile Number" maxlength="10"
+                  formControlName="telephone1" placeholder="Mobile Number"
                   [ngClass]="{ 'is-invalid': submitted &&
                   controlerData.telephone1.errors }" />
-                  <div *ngIf="submitted && userEdit.get('telephone1').hasError('required')" class="invalid-feedback">
-                    Phone Number is required
-                  </div>
-                  <div *ngIf="userEdit.get('telephone1').hasError('pattern')" class="invalid-feedback">
-                    It is not a valid mobile number.
-                  </div>
-              
+                <div *ngIf="submitted && controlerData.telephone1.errors"
+                  class="invalid-feedback">
+                  <div *ngIf="controlerData.telephone1.errors.required">Mobile
+                    Number is required</div>
+                </div>
               </div>
 
               <div class="col-sm-6 mb-3 mb-sm-0">
@@ -208,12 +206,12 @@
                   formControlName="telephone2" placeholder="Land Number"
                   [ngClass]="{ 'is-invalid': submitted &&
                   controlerData.telephone2.errors }" />
-                  <div *ngIf="submitted && userEdit.get('telephone2').hasError('required')" class="invalid-feedback">
-                    Phone Number is required
-                  </div>
-                  <div *ngIf="userEdit.get('telephone2').hasError('pattern')" class="invalid-feedback">
-                    It is not a valid mobile number.
-                  </div>
+                <div *ngIf="submitted && controlerData.telephone2.errors"
+                  class="invalid-feedback">
+                  <div *ngIf="controlerData.telephone2.errors.required">Land
+                    Number
+                    is required</div>
+                </div>
               </div>
             </div>
 
@@ -226,7 +224,6 @@
 
                 </div>
               </div>
-             
               <div class="col-md-6">
                 <div class="form-group">
                   <input type="text" class="form-control" #data

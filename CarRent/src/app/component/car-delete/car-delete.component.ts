@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CarService } from 'src/app/services/car.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { getQueryValue } from '@angular/core/src/view/query';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import Swal from 'sweetalert2'
 
 @Component({
-  selector: 'app-car-edit',
-  templateUrl: './car-edit.component.html',
-  styleUrls: ['./car-edit.component.css']
+  selector: 'app-car-delete',
+  templateUrl: './car-delete.component.html',
+  styleUrls: ['./car-delete.component.css']
 })
-export class CarEditComponent implements OnInit {
+export class CarDeleteComponent implements OnInit {
+
   id:any;
-  carDetailsEdit:FormGroup;
+  carDelete:FormGroup;
   submitted = false;
   selectValue:any;
 
@@ -31,7 +31,7 @@ export class CarEditComponent implements OnInit {
   
 
   ngOnInit() {
-    this.carDetailsEdit = this.formBuilder.group({
+    this.carDelete = this.formBuilder.group({
       registeredNumber: ['', Validators.required],
       registerdYear: ['', Validators.required],
       fuleType: ['', Validators.required],
@@ -61,17 +61,17 @@ export class CarEditComponent implements OnInit {
     .subscribe(
       data=>{
       
-       this.carDetailsEdit.controls['registeredNumber'].setValue(data[0].registeredNumber);
-       this.carDetailsEdit.controls['registerdYear'].setValue(data[0].registerdYear);
-       this.carDetailsEdit.controls['vehicleBrand'].setValue(data[0].vehicleBrand);
-       this.carDetailsEdit.controls['vehicleModel'].setValue(data[0].vehicleModel.name);
-       this.carDetailsEdit.controls['color'].setValue(data[0].vehicleModel.color);
-       this.carDetailsEdit.controls['modelYear'].setValue(data[0].vehicleModel.modelYear);
-       this.carDetailsEdit.controls['fuleType'].setValue(data[0].fuleType);
-       this.carDetailsEdit.controls['acNonAc'].setValue(data[0].acOrNonAc);
-       this.carDetailsEdit.controls['tranmision'].setValue(data[0].transmission);
-       this.carDetailsEdit.controls['comment'].setValue(data[0].comment);
-       this.carDetailsEdit.controls['createdDate'].setValue(data[0].createdDate);
+       this.carDelete.controls['registeredNumber'].setValue(data[0].registeredNumber);
+       this.carDelete.controls['registerdYear'].setValue(data[0].registerdYear);
+       this.carDelete.controls['vehicleBrand'].setValue(data[0].vehicleBrand);
+       this.carDelete.controls['vehicleModel'].setValue(data[0].vehicleModel.name);
+       this.carDelete.controls['color'].setValue(data[0].vehicleModel.color);
+       this.carDelete.controls['modelYear'].setValue(data[0].vehicleModel.modelYear);
+       this.carDelete.controls['fuleType'].setValue(data[0].fuleType);
+       this.carDelete.controls['acNonAc'].setValue(data[0].acOrNonAc);
+       this.carDelete.controls['tranmision'].setValue(data[0].transmission);
+       this.carDelete.controls['comment'].setValue(data[0].comment);
+       this.carDelete.controls['createdDate'].setValue(data[0].createdDate);
        
        
        
@@ -91,15 +91,16 @@ export class CarEditComponent implements OnInit {
 
 
   get controlerData() {
-    return this.carDetailsEdit.controls;
+    return this.carDelete.controls;
   }
   
-  
+
   
       uploadSubmit() {
+        
         this.submitted = true;
     
-        if (this.carDetailsEdit.valid) {
+        if (this.carDelete.valid) {
           let carData = {
             "id": this.id,
             "registeredNumber": this.controlerData.registeredNumber.value,
@@ -125,19 +126,13 @@ export class CarEditComponent implements OnInit {
     
     
           //passing to service
-          this.carService.updateAllCars(carData)
+          this.carService.deleteCar(carData)
             .subscribe(
               response => {
                 console.log(response);
                 this.submitted = false;
-                this.carDetailsEdit.reset();
-                Swal.fire({
-                  position: 'center',
-                  icon: 'success',
-                  title: 'Your work has been saved',
-                  showConfirmButton: false,
-                  timer: 2500
-                })
+                this.carDelete.reset();
+                
               },
               error => {
                 console.log(error);

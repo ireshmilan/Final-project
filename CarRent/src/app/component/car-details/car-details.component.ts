@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import Swal from 'sweetalert2'
 
 import { FileUploader } from 'ng2-file-upload';
 
@@ -47,6 +48,7 @@ export class CarDetailsComponent implements OnInit {
   ) {
     this.services = services;
   }
+
 
   ngOnInit() {
     this.carDetailsregistration = this.formBuilder.group({
@@ -234,6 +236,14 @@ export class CarDetailsComponent implements OnInit {
             console.log(response);
             this.submitted = false;
             this.carDetailsregistration.reset();
+            
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Your work has been saved',
+              showConfirmButton: false,
+              timer: 2500
+            })
           },
           error => {
             console.log(error);

@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { error } from 'util';
 import { CarService } from 'src/app/services/car.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-rent-details',
@@ -43,22 +44,45 @@ export class RentDetailsComponent implements OnInit {
       comment: ['', Validators.required],
       registeredNumber:'',
       model:''
-    });
+    },
+    {    
+      validator: this.MustMatch('startDate', 'endDate')
+    }
+    );
     this.displayValueForm()
 
+  }
+
+  MustMatch(controlName: string, matchingControlName: string) {
+    return (formGroup: FormGroup) => {
+      const control = formGroup.controls[controlName];
+      const matchingControl = formGroup.controls[matchingControlName];
+
+      if (matchingControl.errors && !matchingControl.errors.mustMatch) {
+        // return if another validator has already found an error on the matchingControl
+        return;
+      }
+
+      // set error on matchingControl if validation fails
+      if (control.value >= matchingControl.value) {
+        matchingControl.setErrors({ mustMatch: true });
+      } else {
+        matchingControl.setErrors(null);
+      }
+    }
   }
 
 
   displayValueForm() {
     //get accutale route id 
    this.id = (this.route.snapshot.paramMap.get('id'));
-   console.log(this.id);
+   console.log("wqwwqwqww",sessionStorage.getItem('user'));
  
     
     this.carService.getById(this.id)
     .subscribe(
       data=>{
-      
+        this.rentVehicle.controls['customerId'].setValue(JSON.parse(sessionStorage.getItem('user')).id);
        this.rentVehicle.controls['carId'].setValue(data[0].id);
        this.rentVehicle.controls['registeredNumber'].setValue(data[0].registeredNumber);
        this.rentVehicle.controls['model'].setValue(data[0].vehicleBrand +" "+data[0].vehicleModel.name);
@@ -104,6 +128,14 @@ export class RentDetailsComponent implements OnInit {
         console.log(response);
         this.submitted = false;
         this.rentVehicle.reset();
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Your Rent has been saved',
+          showConfirmButton: false,
+          timer: 2500
+        })
+        //
       },
       error=>{
         console.log(error);
