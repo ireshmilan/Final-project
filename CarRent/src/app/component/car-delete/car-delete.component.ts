@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CarService } from 'src/app/services/car.service';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import Swal from 'sweetalert2'
@@ -24,7 +24,8 @@ export class CarDeleteComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private carService:CarService,
-    private formBuilder:FormBuilder
+    private formBuilder:FormBuilder,
+    private router:Router
     
   ) { }
 
@@ -97,7 +98,8 @@ export class CarDeleteComponent implements OnInit {
 
   
       uploadSubmit() {
-        
+
+
         this.submitted = true;
     
         if (this.carDelete.valid) {
@@ -126,12 +128,28 @@ export class CarDeleteComponent implements OnInit {
     
     
           //passing to service
-          this.carService.deleteCar(carData)
+          
+    
+       
+
+        Swal.fire({
+          title: 'Are you sure?',
+          text: "Do you Want to delete!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+          if (result.value) {
+            this.carService.deleteCar(carData)
             .subscribe(
               response => {
                 console.log(response);
                 this.submitted = false;
                 this.carDelete.reset();
+                this.router.navigate(['/carDeleteTable']);
+                
                 
               },
               error => {
@@ -139,11 +157,11 @@ export class CarDeleteComponent implements OnInit {
                 return;
               }
             )
-    
-        } else {
-          return;
-        }
-    
+          }
+        })
+        
+  
+      } 
     
       }
   

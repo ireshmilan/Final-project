@@ -34,6 +34,11 @@ import { RentDetailsEditComponent } from './component/rent-details-edit/rent-det
 import { MyActiveRentTableComponent } from './component/my-active-rent-table/my-active-rent-table.component';
 import { MyPreviousRentTableComponent } from './component/my-previous-rent-table/my-previous-rent-table.component';
 import { MyActiveRentUpdateComponent } from './component/my-active-rent-update/my-active-rent-update.component';
+import { ReturnVehicleTableComponent } from './component/return-vehicle-table/return-vehicle-table.component';
+import { ReturnVehicleComponent } from './component/return-vehicle/return-vehicle.component';
+import { AvailableComponent } from './component/available/available.component';
+import { AllPreviousRentComponent } from './component/all-previous-rent/all-previous-rent.component';
+import { AdminPermissionComponent } from './component/admin-permission/admin-permission.component';
 
 
 @NgModule({
@@ -61,6 +66,11 @@ import { MyActiveRentUpdateComponent } from './component/my-active-rent-update/m
     MyActiveRentTableComponent,
     MyPreviousRentTableComponent,
     MyActiveRentUpdateComponent,
+    ReturnVehicleTableComponent,
+    ReturnVehicleComponent,
+    AvailableComponent,
+    AllPreviousRentComponent,
+    AdminPermissionComponent,
  
     
     
@@ -74,6 +84,7 @@ import { MyActiveRentUpdateComponent } from './component/my-active-rent-update/m
     HttpClientModule,
     NgxPaginationModule,
     Ng2SearchPipeModule,
+    SharedModule
     
     
   ],

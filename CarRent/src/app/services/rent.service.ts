@@ -15,6 +15,9 @@ export class RentService {
   getAllRents() {
     return this.http.get(this.serverUrl + '/service/getAllRent');
   }
+  getAllPreviousRents() {
+    return this.http.get(this.serverUrl + '/service/getAllPreviousRents');
+  }
   getRentByRentId(id) {
     return this.http.get(this.serverUrl + `/service/findAllRents/${id}`)
   }
@@ -30,5 +33,9 @@ export class RentService {
 
   cancel(rentData){
     return this.http.put(this.serverUrl + '/service/cancel', rentData);
+  }
+
+  complete(rentData){
+    return this.http.put(this.serverUrl + '/service/complete', rentData);
   }
 }

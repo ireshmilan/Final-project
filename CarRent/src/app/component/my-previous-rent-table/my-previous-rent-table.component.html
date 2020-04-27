@@ -17,7 +17,7 @@
          
           
             <p>
-              My Active Rent Details
+              My Previous Rent Details
             </p>
            
           
@@ -49,6 +49,7 @@
                       <th>From Location</th>
                       <th>To Location</th>
                       <th>Comment</th>
+                      <th>status</th>
                       <!-- <th>Click</th> -->
                     </tr>
                   </thead>
@@ -87,7 +88,24 @@
                       <td style="text-align: center;">
                         {{ data.comments }}
                       </td>
-                      
+                      <!-- <td style="text-align: center;">
+                        {{ data.status }}
+                      </td> -->
+                      <td>
+                        <span *ngIf="'Completed' == data.status" class="glyphicon glyphicon-ok" style="color:rgb(7, 206, 7)"
+                          aria-hidden="true">{{ data.status}}</span>
+                        <span *ngIf="'Cancel' == data.status" class="glyphicon glyphicon-remove" style="color:red"
+                          aria-hidden="true">{{ data.status }}</span>
+                        <span *ngIf="'Inprogress' == data.status" class="glyphicon glyphicon-refresh" style="color:blue"
+                          aria-hidden="true">{{ data.status }}</span>
+                        <span *ngIf="'Pending' == data.status" class="glyphicon glyphicon-time" style="color:Gold "
+                          aria-hidden="true">{{ data.status }}</span>
+                          <span *ngIf="'new' == data.status" class="glyphicon glyphicon-plus" style="color:purple "
+                          aria-hidden="true">{{ data.status }}</span>
+                          <span *ngIf="'Ready' == data.status" class=" glyphicon glyphicon-transfer" style="color:lightcoral "
+                          aria-hidden="true">{{ data.status }}</span>  
+                                       
+                      </td> 
                       <!-- <td style="text-align: center;">
                         <button type="button" class="btn btn-primary btn-sm"
                           (click)="RoutePage(data)">View</button>

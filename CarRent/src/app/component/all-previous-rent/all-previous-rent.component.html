@@ -47,8 +47,10 @@
                       <th>From</th>
                       <th>To</th>
                       
-                      <th>Click</th>
-                      <th>Cancel</th>
+                      <th>Comment</th>
+                      <th>From</th>
+                      <th>To</th>
+                      <th>Status</th>
                     </tr>
                   </thead>
 
@@ -81,15 +83,22 @@
                       <td style="text-align: center;">
                         {{ data.endDate }}
                       </td>
+                      <td style="text-align: center;">
+                        {{ data.comments }}
+                      </td>
+                      <td style="text-align: center;">
+                        {{ data.start }}
+                      </td>
+                      <td style="text-align: center;">
+                        {{ data.end }}
+                      </td>
+                      <td>
+                        <span *ngIf="'Completed' == data.status" class="glyphicon glyphicon-ok" style="color:rgb(7, 206, 7)"
+                          aria-hidden="true">{{ data.status}}</span>
+                        <span *ngIf="'Cancel' == data.status" class="glyphicon glyphicon-remove" style="color:red"
+                          aria-hidden="true">{{ data.status }}</span>
+                      </td>
                       
-                      <td style="text-align: center;">
-                        <button type="button" class="btn btn-primary btn-sm"
-                          (click)="RoutePage(data)">View</button>
-                      </td>
-                      <td style="text-align: center;">
-                        <button type="button" class="btn btn-primary1 btn-sm"
-                          (click)="RoutePageCancel(data)">Cancel</button>
-                      </td>
 
                     </tr>
 

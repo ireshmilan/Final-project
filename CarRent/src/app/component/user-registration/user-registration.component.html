@@ -62,6 +62,7 @@
                       class="invalid-feedback">
                       <div *ngIf="controlerData.email.errors.required">Email is
                         required</div>
+                        <div *ngIf="controlerData.email.errors.email">Invalid Email</div>
                     </div>
                   </div>
                   <div class="form-group">
@@ -105,27 +106,20 @@
 
                   <div class="form-group row">
                     <div class="col-sm-6 mb-3 mb-sm-0">
-                      <input type="text" class="form-control form-control-user"
-                        formControlName="telephone1" placeholder="Mobile Number"
-                        [ngClass]="{ 'is-invalid': submitted &&
-                        controlerData.telephone1.errors }" />
-                      <div *ngIf="submitted && controlerData.telephone1.errors"
-                        class="invalid-feedback">
-                        <div *ngIf="controlerData.telephone1.errors.required">Mobile
-                          Number is required</div>
-                      </div>
+                      <input type="text" class="form-control form-control-user" formControlName ="telephone1"  placeholder="Mobile Number" [ngClass]="{ 'is-invalid': submitted && controlerData.telephone1.errors }"/>
+                  <div *ngIf="submitted && controlerData.telephone1.errors" class="invalid-feedback">
+                    <div *ngIf="controlerData.telephone1.errors.required">Mobile Number is required</div>
+                    <div *ngIf="controlerData.telephone1.errors.pattern">Please, Enter Valid Mobile Number.</div>
+                </div>
+                      
                     </div>
 
                     <div class="col-sm-6 mb-3 mb-sm-0">
-                      <input type="text" class="form-control form-control-user"
-                        formControlName="telephone2" placeholder="Land Number"
-                        [ngClass]="{ 'is-invalid': submitted &&
-                        controlerData.telephone2.errors }" />
-                      <div *ngIf="submitted && controlerData.telephone2.errors"
-                        class="invalid-feedback">
-                        <div *ngIf="controlerData.telephone2.errors.required">Land
-                          Number is required</div>
-                      </div>
+                      <input type="text" class="form-control form-control-user" formControlName ="telephone2"  placeholder="Land Number" [ngClass]="{ 'is-invalid': submitted && controlerData.telephone2.errors }"/>
+                      <div *ngIf="submitted && controlerData.telephone2.errors" class="invalid-feedback">
+                        <div *ngIf="controlerData.telephone2.errors.required">Land Number is required</div>
+                        <div *ngIf="controlerData.telephone2.errors.pattern">Please, Enter Valid Mobile Number.</div>
+                    </div>
                     </div>
                   </div>
 
@@ -216,13 +210,13 @@
               <a href="index.html" class="btn btn-facebook btn-user btn-block">
                 <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
               </a> -->
-                  <hr>
+                  
                   <div class="text-center">
-                    <a class="small" href="forgot-password.html">Forgot
-                      Password?</a>
+                    <!-- <a class="small" href="forgot-password.html">Forgot
+                      Password?</a> -->
                   </div>
                   <div class="text-center">
-                    <a class="small" href="login.html">Already have an account?
+                    <a class="small" (click)="loging();">Already have an account?
                       Login!</a>
                   </div>
                 </div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CarService } from 'src/app/services/car.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { getQueryValue } from '@angular/core/src/view/query';
@@ -24,7 +24,8 @@ export class CarEditComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private carService:CarService,
-    private formBuilder:FormBuilder
+    private formBuilder:FormBuilder,
+    private router:Router
     
   ) { }
 
@@ -72,6 +73,7 @@ export class CarEditComponent implements OnInit {
        this.carDetailsEdit.controls['tranmision'].setValue(data[0].transmission);
        this.carDetailsEdit.controls['comment'].setValue(data[0].comment);
        this.carDetailsEdit.controls['createdDate'].setValue(data[0].createdDate);
+       this.carDetailsEdit.controls['photo'].setValue(data[0].photo);
        
        
        
@@ -109,6 +111,7 @@ export class CarEditComponent implements OnInit {
             "transmission": this.controlerData.tranmision.value,
             "vehicleBrand": this.controlerData.vehicleBrand.value,
             "comment": this.controlerData.comment.value,
+            "photo": this.controlerData.photo.value,
             "vehicleModel": {
               "name": this.controlerData.vehicleModel.value,
               "color": this.controlerData.color.value,
@@ -134,10 +137,11 @@ export class CarEditComponent implements OnInit {
                 Swal.fire({
                   position: 'center',
                   icon: 'success',
-                  title: 'Your work has been saved',
+                  title: 'Car Updated',
                   showConfirmButton: false,
                   timer: 2500
                 })
+                this.router.navigate(['/dashBoard']);
               },
               error => {
                 console.log(error);

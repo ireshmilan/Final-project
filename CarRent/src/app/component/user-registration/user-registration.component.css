@@ -10625,8 +10625,8 @@
   }
   
   .bg-register-image {
-    background: url("https://source.unsplash.com/Mv9hjnEUHR4/600x800");
-    background-position: center;
+    background-image: url('/../assets/image/manwithcar.jpg');
+    background-position: right;
     background-size: cover;
   }
   

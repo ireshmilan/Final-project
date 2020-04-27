@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Services } from 'src/app/services/Services';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2'
 
 @Component({
@@ -20,7 +20,8 @@ export class LogingUserUpdateComponent implements OnInit {
 
   constructor(private services:Services,
     private route:ActivatedRoute,
-    private formBuilder:FormBuilder,) { }
+    private formBuilder:FormBuilder,
+    private router:Router) { }
 
   ngOnInit() {
 this.loginUserUpdate = this.formBuilder.group({
@@ -151,8 +152,10 @@ this.displayValueForm()
               title: 'Your work has been saved',
               showConfirmButton: false,
               timer: 2500
+              
             })
             sessionStorage.setItem('user', JSON.stringify(response))
+            this.router.navigate(['/dashBoard']);
           },
           error => {
             console.log(error);

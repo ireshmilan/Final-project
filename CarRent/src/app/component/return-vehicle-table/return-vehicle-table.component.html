@@ -17,7 +17,7 @@
          
           
             <p>
-              All Rent Details
+              Return Vehicle
             </p>
            
           
@@ -47,8 +47,8 @@
                       <th>From</th>
                       <th>To</th>
                       
-                      <th>Click</th>
-                      <th>Cancel</th>
+                     
+                      <th></th>
                     </tr>
                   </thead>
 
@@ -82,13 +82,10 @@
                         {{ data.endDate }}
                       </td>
                       
-                      <td style="text-align: center;">
-                        <button type="button" class="btn btn-primary btn-sm"
-                          (click)="RoutePage(data)">View</button>
-                      </td>
+                     
                       <td style="text-align: center;">
                         <button type="button" class="btn btn-primary1 btn-sm"
-                          (click)="RoutePageCancel(data)">Cancel</button>
+                          (click)="RoutePageCancel(data)">Complete</button>
                       </td>
 
                     </tr>

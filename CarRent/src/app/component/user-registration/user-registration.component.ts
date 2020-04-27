@@ -15,6 +15,7 @@ export class UserRegistrationComponent implements OnInit {
 
   userRegistration: FormGroup;
   submitted = false;
+  invalidLogin = false
 
 
   gender = ['Select Gender', 'Male', 'Female'];
@@ -30,7 +31,7 @@ export class UserRegistrationComponent implements OnInit {
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       userName: ['', Validators.required],
-      email: ['', Validators.required],
+      email: ['',  [Validators.required, Validators.email]],
       idNumber: ['', Validators.required],
       birthDay: ['', Validators.required],
       gender: ['', Validators.required],
@@ -88,7 +89,10 @@ export class UserRegistrationComponent implements OnInit {
 
   }
 
-
+  loging(){
+  
+    this.router.navigate([''])
+  }
   get controlerData() {
     return this.userRegistration.controls;
   }
@@ -123,7 +127,7 @@ export class UserRegistrationComponent implements OnInit {
       const formData = new FormData();
       //formData.append('car', JSON.(userdata));
 
-
+    
 
 
       this.services.saveCustomerOwnerDetails(userdata)
@@ -142,8 +146,21 @@ export class UserRegistrationComponent implements OnInit {
             })
           },
           error => {
-            console.log(error);
-            return;
+            {
+              let errorMsg = "Something went Wrong";
+              if (error.status === 500) {
+                errorMsg = "Username or email already exit!!!!";
+              }
+              console.log("error", error)
+              Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: errorMsg,
+                showConfirmButton: true,
+                timer: 5500
+              })
+              this.invalidLogin = true
+            }
           }
         )
 

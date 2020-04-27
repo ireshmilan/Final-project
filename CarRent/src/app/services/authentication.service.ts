@@ -11,7 +11,12 @@ import { User } from '../_model/user';
 export class AuthenticationService {
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
-  
+  static isAdmin(){
+    if(JSON.parse(sessionStorage.getItem('user')).role =='Admin'){
+      return true;
+    }
+    return false;
+  }
   constructor(private httpClient:HttpClient) {
     this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')));
     this.currentUser = this.currentUserSubject.asObservable();

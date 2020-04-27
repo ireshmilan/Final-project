@@ -64,11 +64,38 @@ export class CarDetailsComponent implements OnInit {
       modelYear: ['', Validators.required],
       ownerId: [''],
       photo: ['', Validators.required]
-    })
+    },
+    {
+      validator: this.MustMatch('modelYear', 'registerdYear')
+    }
+    
+    )
     this.addDefaultValue()
     // this.getOwners();
     this.genID()
   }
+
+  MustMatch(controlName: string, matchingControlName: string) {
+    return (formGroup: FormGroup) => {
+      const control = formGroup.controls[controlName];
+      var matchingControl = formGroup.controls[matchingControlName];
+
+      if (matchingControl.errors && !matchingControl.errors.mustMatch) {
+        // return if another validator has already found an error on the matchingControl
+        return;
+      }
+      // set error on matchingControl if validation fails
+      
+      if (control.value >= matchingControl.value) {
+        matchingControl.setErrors({ mustMatch: true }); 
+      } else {
+        matchingControl.setErrors(null);
+
+      }
+    }
+  }
+
+
   addDefaultValue() {
     const defaultData = 'Choose your Brand';
 

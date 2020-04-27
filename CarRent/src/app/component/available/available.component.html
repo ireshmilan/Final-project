@@ -17,7 +17,7 @@
          
           
             <p>
-              All Rent Details
+              Already Booking Cars
             </p>
            
           
@@ -38,17 +38,17 @@
                   cellspacing="0">
                   <thead>
                     <tr>
-                      <th>Rent Id</th>
-                      <th>Rent Created Date</th>
+                     
+                     <th>Vehicle Id</th>
+                     <td>Photo</td>
                       <th>Vehicle</th>
                       <th>Registerd No</th>
-                      <th>Customer</th>
+                      
 
                       <th>From</th>
                       <th>To</th>
                       
-                      <th>Click</th>
-                      <th>Cancel</th>
+                    
                     </tr>
                   </thead>
 
@@ -56,12 +56,20 @@
 
                     <tr *ngFor="let data of tableData |filter:searchText |paginate:{itemsPerPage:7,currentPage:p};">
 
+                      
+                      
+
+                      
                       <td style="text-align: center;">
-                        {{ data.id }}
+                        {{ data.car[0].id }}
                       </td>
-                      <td style="text-align: center;">
-                        {{ data.createdDate }}
-                      </td>
+
+                      <td>
+                        <img src="data:image/jpeg;base64,{{data.car[0].photo}}"
+                          height="auto"
+                          width="120">
+                        </td>
+                      
                       <td style="text-align: center;">
                         {{ data.car[0].vehicleBrand }}
                         {{ data.car[0].vehicleModel.name }}
@@ -70,11 +78,7 @@
                       <td style="text-align: center;">
                         {{ data.car[0].registeredNumber }}
                       </td>
-                      <td style="text-align: center;">
-                        {{ data.customerOwner[0].firstName }}
-                        {{ data.customerOwner[0].lastName }}
-                        
-                      </td>
+                      
                       <td style="text-align: center;">
                         {{ data.needDate }}
                       </td>
@@ -82,14 +86,7 @@
                         {{ data.endDate }}
                       </td>
                       
-                      <td style="text-align: center;">
-                        <button type="button" class="btn btn-primary btn-sm"
-                          (click)="RoutePage(data)">View</button>
-                      </td>
-                      <td style="text-align: center;">
-                        <button type="button" class="btn btn-primary1 btn-sm"
-                          (click)="RoutePageCancel(data)">Cancel</button>
-                      </td>
+                    
 
                     </tr>
 

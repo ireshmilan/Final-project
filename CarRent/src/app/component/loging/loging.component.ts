@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Services } from 'src/app/services/Services';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-loging',
@@ -57,15 +58,28 @@ export class LogingComponent implements OnInit {
       this.router.navigate(['/dashBoard']);
     },
     error=>{
-      console.log(error);
-    }
-    )
+      let errorMsg = "Something went Wrong";
+      if (error.status === 401) {
+        errorMsg = "Username or Password is Invalid!!!!";
+      }
+      console.log("error", error)
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: errorMsg,
+        showConfirmButton: true,
+        timer: 5500
+      })
+      this.invalidLogin = true
+    })
+  }
+    
   
   }
 
   
 
-}
+
 
 
 

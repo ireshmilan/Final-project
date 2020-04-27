@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RentService } from 'src/app/services/rent.service';
 import Swal from 'sweetalert2'
 
@@ -18,7 +18,8 @@ export class RentDetailsEditComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private rentservice:RentService,
-    private formBuilder:FormBuilder
+    private formBuilder:FormBuilder,
+    private router:Router
     
   ) { }
 
@@ -125,6 +126,7 @@ export class RentDetailsEditComponent implements OnInit {
                   showConfirmButton: false,
                   timer: 2500
                 })
+                this.router.navigate(['/dashBoard']);
               },
               error => {
                 console.log(error);

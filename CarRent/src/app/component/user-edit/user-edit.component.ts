@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Services } from 'src/app/services/Services';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { error } from 'util';
 import Swal from 'sweetalert2'
 
@@ -21,7 +21,8 @@ export class UserEditComponent implements OnInit {
 
   constructor(private services:Services,
     private route:ActivatedRoute,
-    private formBuilder:FormBuilder) { }
+    private formBuilder:FormBuilder,
+    private router:Router) { }
 
   ngOnInit() {
 this.userEdit = this.formBuilder.group({
@@ -151,6 +152,7 @@ this.displayValueForm()
               showConfirmButton: false,
               timer: 2500
             })
+            this.router.navigate(['/dashBoard']);
           },
           error => {
             console.log(error);

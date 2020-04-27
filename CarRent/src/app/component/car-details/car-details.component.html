@@ -33,27 +33,32 @@
                                             controlerData.registeredNumber.errors"
                                             class="invalid-feedback">
                                             <div
-                                                *ngIf="controlerData.registeredNumber.errors.required">Registered
-                                                Number is required</div>
+                                                *ngIf="controlerData.registeredNumber.errors.required">Registered Number is required</div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-control"
+                                        <input type="text" class="form-control" numbersOnly
                                             formControlName="registerdYear"
                                             placeholder="Enter Register Year"
                                             [ngClass]="{
                                             'is-invalid': submitted &&
                                             controlerData.registerdYear.errors
                                             }" />
-                                        <div *ngIf="submitted &&
-                                            controlerData.registerdYear.errors"
-                                            class="invalid-feedback">
+                                            <div class="errors"
+                                            *ngIf="carDetailsregistration.get('registerdYear').invalid &&
+                                            (carDetailsregistration.get('registerdYear').touched ||
+                                            carDetailsregistration.get('registerdYear').dirty)">
                                             <div
-                                                *ngIf="controlerData.registerdYear.errors.required">Registered
-                                                Year is required</div>
-                                        </div>
+                                              *ngIf="carDetailsregistration.get('registerdYear').hasError('required')">
+                                              Year is required
+                                            </div>
+                                            <div class="error-text"
+                                              *ngIf="carDetailsregistration.get('registerdYear').hasError('passwordStrength')">
+                                              {{carDetailsregistration.get('registerdYear').errors['passwordStrength']}}
+                                            </div>
+                                          </div>
                                     </div>
                                 </div>
 
@@ -77,8 +82,7 @@
                                             controlerData.vehicleBrand.errors"
                                             class="invalid-feedback">
                                             <div
-                                                *ngIf="controlerData.vehicleBrand.errors.required">Select
-                                                Brand Name</div>
+                                                *ngIf="controlerData.vehicleBrand.errors.required">Select Brand Name</div>
                                         </div>
                                     </div>
 
@@ -105,10 +109,9 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <input type="text" class="form-control"
+                                        <input type="text" class="form-control" numbersOnly
                                             formControlName="modelYear"
-                                            placeholder="Enter
-                                            Model Year" [ngClass]="{
+                                            placeholder="Enter Model Year" [ngClass]="{
                                             'is-invalid': submitted
                                             && controlerData.modelYear.errors }"
                                             />
@@ -127,8 +130,7 @@
                                     <div class="form-group">
                                         <input type="text" class="form-control"
                                             formControlName="color"
-                                            placeholder="Enter Model
-                                            Color" [ngClass]="{ 'is-invalid':
+                                            placeholder="Enter Model Color" [ngClass]="{ 'is-invalid':
                                             submitted &&
                                             controlerData.color.errors }" />
                                         <div *ngIf="submitted &&

@@ -18,6 +18,10 @@ import { RentDetailsEditComponent } from './component/rent-details-edit/rent-det
 import { MyActiveRentTableComponent } from './component/my-active-rent-table/my-active-rent-table.component';
 import { MyPreviousRentTableComponent } from './component/my-previous-rent-table/my-previous-rent-table.component';
 import { MyActiveRentUpdateComponent } from './component/my-active-rent-update/my-active-rent-update.component';
+import { ReturnVehicleTableComponent } from './component/return-vehicle-table/return-vehicle-table.component';
+import { ReturnVehicleComponent } from './component/return-vehicle/return-vehicle.component';
+import { AvailableComponent } from './component/available/available.component';
+import { AllPreviousRentComponent } from './component/all-previous-rent/all-previous-rent.component';
 
 const routes: Routes = [
   { path: '', component: LogingComponent },
@@ -38,6 +42,10 @@ const routes: Routes = [
   {path:'myActiveRentTable', component:MyActiveRentTableComponent},
   {path:'myPreviousRentTable', component:MyPreviousRentTableComponent},
   {path:'myActiveRentUpdate/:id', component:MyActiveRentUpdateComponent},
+  {path:'returnVehicleTable', component:ReturnVehicleTableComponent},
+  {path:'returnVehicle/:id', component:ReturnVehicleComponent},
+  {path:'alreadyBookingCars', component:AvailableComponent},
+  {path:'allPreviousDetails', component:AllPreviousRentComponent},
 ];
 
 @NgModule({
